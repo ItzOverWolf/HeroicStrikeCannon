@@ -52,7 +52,7 @@ public class ItemDataUtil {
         ItemMeta meta = item.getItemMeta();
         if (meta == null) return 3;
         
-        return meta.getPersistentDataContainer().getOrDefault(RING_COUNT, PersistentDataType.INTEGER, 3);
+        return meta.getPersistentDataContainer().getOrDefault(RING_COUNT, PersistentDataType.INTEGER, 4);
     }
     
     public static void setRingCount(ItemStack item, int ringCount) {

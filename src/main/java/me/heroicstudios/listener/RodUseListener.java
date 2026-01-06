@@ -4,6 +4,7 @@ import me.heroicstudios.HeroicStrikeCannon;
 import me.heroicstudios.cannon.StrikeExecutor;
 import me.heroicstudios.item.CannonItem;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -33,6 +34,13 @@ public class RodUseListener implements Listener {
         }
 
         event.setCancelled(true); // Prevent normal fishing rod behavior
+
+        player.playSound(
+                player.getLocation(),      // Location to play the sound
+                Sound.ENTITY_ITEM_BREAK, // The sound effect
+                1.0f,                      // Volume
+                1.0f                       // Pitch
+        );
 
         if (!player.hasPermission("heroicstrike.use")) {
             player.sendMessage("§cYou don't have permission to use the Strike Cannon!");

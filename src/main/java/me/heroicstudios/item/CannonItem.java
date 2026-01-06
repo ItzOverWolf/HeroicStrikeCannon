@@ -10,7 +10,7 @@ import java.util.List;
 public class CannonItem {
     
     public static ItemStack createDefault() {
-        return createCannon(100, StrikeType.ORBITAL_RING, 3);
+        return createCannon(60, StrikeType.ORBITAL_RING, 6);
     }
     
     public static ItemStack createCannon(int height, StrikeType strikeType, int ringCount) {

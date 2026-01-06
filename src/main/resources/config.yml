@@ -1,25 +1,25 @@
 # Heroic Strike Cannon Configuration
 
-cooldown-seconds: 30
+cooldown-seconds: 0  # How many seconds must pass before the cannon can be fired again
 
 strike:
-  max-height: 300
-  min-height: 20
-  default-height: 100
-  max-rings: 10
-  max-range: 100
+  max-height: 300          # The highest Y-coordinate the cannon strike can target
+  min-height: 20           # The lowest Y-coordinate the cannon strike can target
+  default-height: 20       # Default Y-coordinate for the strike if none is specified
+  max-rings: 20            # Maximum number of concentric TNT rings per strike
+  max-range: 100           # Maximum distance (in blocks) the cannon can hit from origin
 
 ring-strike:
-  base-radius: 2.0
-  ring-spacing: 3.0
-  base-points: 6
-  points-per-ring: 4
-  base-fuse: 60
-  fuse-offset: 4
-  tnt-yield: 6.0
-  break-blocks: true
+  base-radius: 3.0         # Radius of the innermost TNT ring
+  ring-spacing: 5.0        # Distance between successive rings of TNT
+  base-points: 10          # Number of TNT spawns in the first ring
+  points-per-ring: 20       # Additional TNT spawns added per extra ring
+  base-fuse: 150           # Base fuse duration before TNT explodes
+  fuse-offset: 1           # Variation in fuse timing to stagger explosions
+  tnt-yield: 10.0          # Explosion power of each TNT entity
+  break-blocks: true       # Whether TNT explosions destroy blocks or just deal damage
 
 worldguard:
-  enabled: true
-  check-build-permission: true
-  respect-explosion-flags: true
+  enabled: true            # Whether the cannon respects WorldGuard regions
+  check-build-permission: true  # Only allow strikes where the player has build rights
+  respect-explosion-flags: true # Prevent TNT from exploding in regions that disallow explosions
