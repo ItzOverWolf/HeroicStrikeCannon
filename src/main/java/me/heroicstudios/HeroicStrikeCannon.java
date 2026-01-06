@@ -13,29 +13,31 @@ public final class HeroicStrikeCannon extends JavaPlugin {
     private static HeroicStrikeCannon instance;
     private ConfigManager configManager;
     private CooldownManager cooldownManager;
+    private SignInputListener signInputListener;
 
     @Override
     public void onEnable() {
         instance = this;
-        
+
         // Initialize managers
         this.configManager = new ConfigManager(this);
         this.cooldownManager = new CooldownManager();
-        
+
         // Load configuration
         configManager.loadConfig();
-        
+
         // Register listeners
         getServer().getPluginManager().registerEvents(new RodUseListener(this), this);
-        getServer().getPluginManager().registerEvents(new SignInputListener(this), this);
-        
+        this.signInputListener = new SignInputListener(this);
+        getServer().getPluginManager().registerEvents(signInputListener, this);
+
         // Register commands
         var command = getCommand("hsc");
         if (command != null) {
             command.setExecutor(new CannonCommand(this));
             command.setTabCompleter(new CannonTabCompleter());
         }
-        
+
         getLogger().info("Heroic Strike Cannon has been enabled!");
     }
 
@@ -55,5 +57,9 @@ public final class HeroicStrikeCannon extends JavaPlugin {
 
     public CooldownManager getCooldownManager() {
         return cooldownManager;
+    }
+
+    public SignInputListener getSignInputListener() {
+        return signInputListener;
     }
 }
