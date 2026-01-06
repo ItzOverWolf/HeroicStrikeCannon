@@ -1,0 +1,32 @@
+name: HeroicStrikeCannon
+version: 1.0.0
+main: me.heroicstudios.HeroicStrikeCannon
+api-version: 1.21
+author: HeroicStudios
+description: Orbital strike cannon using fishing rod mechanics
+softdepend: [WorldGuard]
+
+commands:
+  hsc:
+    description: Heroic Strike Cannon commands
+    usage: /<command> [give|reload] [player]
+    aliases: [heroicstrike, strikecannon]
+    permission: heroicstrike.use
+
+permissions:
+  heroicstrike.*:
+    description: All HeroicStrikeCannon permissions
+    default: op
+    children:
+      heroicstrike.use: true
+      heroicstrike.give: true
+      heroicstrike.reload: true
+  heroicstrike.use:
+    description: Use the strike cannon
+    default: true
+  heroicstrike.give:
+    description: Give strike cannons to players
+    default: op
+  heroicstrike.reload:
+    description: Reload plugin configuration
+    default: op

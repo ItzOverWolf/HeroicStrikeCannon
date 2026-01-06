@@ -1,0 +1,25 @@
+# Heroic Strike Cannon Configuration
+
+cooldown-seconds: 30
+
+strike:
+  max-height: 300
+  min-height: 20
+  default-height: 100
+  max-rings: 10
+  max-range: 100
+
+ring-strike:
+  base-radius: 2.0
+  ring-spacing: 3.0
+  base-points: 6
+  points-per-ring: 4
+  base-fuse: 60
+  fuse-offset: 4
+  tnt-yield: 6.0
+  break-blocks: true
+
+worldguard:
+  enabled: true
+  check-build-permission: true
+  respect-explosion-flags: true
