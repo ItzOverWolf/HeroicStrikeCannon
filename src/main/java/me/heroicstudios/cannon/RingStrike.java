@@ -59,7 +59,7 @@ public class RingStrike {
                 
                 currentRing++;
             }
-        }.runTaskTimer(plugin, 0L, 5L); // 5 tick delay between rings
+        }.runTaskTimer(plugin, 0L, 0L); // 5 tick delay between rings
         
         return true;
     }

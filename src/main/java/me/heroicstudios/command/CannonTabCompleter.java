@@ -13,11 +13,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CannonTabCompleter implements TabCompleter {
-    
+
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
-                                              @NotNull String alias, @NotNull String[] args) {
-        
+                                                @NotNull String alias, @NotNull String[] args) {
+
         if (args.length == 1) {
             List<String> subcommands = new ArrayList<>();
             if (sender.hasPermission("heroicstrike.give")) {
@@ -28,7 +28,7 @@ public class CannonTabCompleter implements TabCompleter {
             }
             return filterStartingWith(subcommands, args[0]);
         }
-        
+
         if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
             if (sender.hasPermission("heroicstrike.give")) {
                 List<String> playerNames = new ArrayList<>();
@@ -38,10 +38,28 @@ public class CannonTabCompleter implements TabCompleter {
                 return filterStartingWith(playerNames, args[1]);
             }
         }
-        
+
+        if (args.length == 3 && args[0].equalsIgnoreCase("give")) {
+            if (sender.hasPermission("heroicstrike.give")) {
+                List<String> cannonTypes = List.of("ring", "drill", "orbital", "bunker", "buster");
+                return filterStartingWith(cannonTypes, args[2]);
+            }
+        }
+
+        // Handle case where second argument might be cannon type instead of player
+        if (args.length == 2 && args[0].equalsIgnoreCase("give")) {
+            if (sender.hasPermission("heroicstrike.give") && sender instanceof Player) {
+                // If no player found with that name, suggest cannon types
+                if (Bukkit.getPlayer(args[1]) == null) {
+                    List<String> cannonTypes = List.of("ring", "drill", "orbital", "bunker", "buster");
+                    return filterStartingWith(cannonTypes, args[1]);
+                }
+            }
+        }
+
         return new ArrayList<>();
     }
-    
+
     private List<String> filterStartingWith(List<String> options, String input) {
         return options.stream()
                 .filter(option -> option.toLowerCase().startsWith(input.toLowerCase()))

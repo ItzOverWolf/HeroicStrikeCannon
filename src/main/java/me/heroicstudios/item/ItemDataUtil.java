@@ -15,9 +15,9 @@ public class ItemDataUtil {
     
     public static int getStrikeHeight(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
-        if (meta == null) return 100;
+        if (meta == null) return 50;
         
-        return meta.getPersistentDataContainer().getOrDefault(STRIKE_HEIGHT, PersistentDataType.INTEGER, 100);
+        return meta.getPersistentDataContainer().getOrDefault(STRIKE_HEIGHT, PersistentDataType.INTEGER, 25);
     }
     
     public static void setStrikeHeight(ItemStack item, int height) {
@@ -52,7 +52,7 @@ public class ItemDataUtil {
         ItemMeta meta = item.getItemMeta();
         if (meta == null) return 3;
         
-        return meta.getPersistentDataContainer().getOrDefault(RING_COUNT, PersistentDataType.INTEGER, 4);
+        return meta.getPersistentDataContainer().getOrDefault(RING_COUNT, PersistentDataType.INTEGER, 3);
     }
     
     public static void setRingCount(ItemStack item, int ringCount) {

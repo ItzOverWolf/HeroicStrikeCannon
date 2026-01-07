@@ -12,12 +12,20 @@ strike:
 ring-strike:
   base-radius: 3.0         # Radius of the innermost TNT ring
   ring-spacing: 5.0        # Distance between successive rings of TNT
-  base-points: 10          # Number of TNT spawns in the first ring
+  base-points: 5          # Number of TNT spawns in the first ring
   points-per-ring: 20       # Additional TNT spawns added per extra ring
   base-fuse: 150           # Base fuse duration before TNT explodes
   fuse-offset: 1           # Variation in fuse timing to stagger explosions
-  tnt-yield: 10.0          # Explosion power of each TNT entity
+  tnt-yield: 5.0          # Explosion power of each TNT entity
   break-blocks: true       # Whether TNT explosions destroy blocks or just deal damage
+
+  drill-strike:
+    start-height: 120
+    min-y: -54
+    step: 2
+    delay-ticks: 3
+    explosion-power: 2.0
+    max-depth: 120
 
 worldguard:
   enabled: true            # Whether the cannon respects WorldGuard regions
